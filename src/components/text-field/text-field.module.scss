@@ -1,0 +1,33 @@
+.Field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.Input {
+  height: 2.5rem;
+  background-color: var(--background-color);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  color: var(--primary-color);
+  font-size: 1rem;
+  border-radius: 0.275rem;
+  padding: 1rem;
+  border: 1px solid var(--muted-color);
+}
+
+.Label {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  color: var(--primary-color);
+}
+
+.Meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Error {
+  color: var(--accent-color);
+}

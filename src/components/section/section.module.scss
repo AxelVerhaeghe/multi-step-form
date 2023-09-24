@@ -1,0 +1,15 @@
+@import '../../app/variables';
+
+.Container {
+  padding: 2rem 1.5rem;
+  z-index: 1;
+  background: var(--background-color);
+  @media (max-width: $breakPoint) {
+    border-radius: 1rem;
+    box-shadow: 5px 5px 12px -5px rgba($color: #000000, $alpha: 0.2);
+  }
+
+  @media (min-width: $breakPoint) {
+    padding: 3rem;
+  }
+}

@@ -1,0 +1,9 @@
+.Text {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-color);
+
+  &:not(:last-child) {
+    padding-bottom: 1rem;
+  }
+}

@@ -1,0 +1,27 @@
+.Button {
+  padding: 1rem;
+  font-weight: var(--font-weight-bold);
+  border-radius: 0.25rem;
+  border: none;
+  &[data-hovered] {
+    cursor: pointer;
+  }
+
+  &[data-variant='primary'] {
+    background: var(--primary-color);
+    color: var(--background-color);
+
+    &[data-hovered] {
+      background: var(--secondary-color);
+    }
+  }
+
+  &[data-variant='secondary'] {
+    background: var(--background-color);
+    color: var(--muted-color);
+
+    &[data-hovered] {
+      background: var(--background-contrast-color);
+    }
+  }
+}

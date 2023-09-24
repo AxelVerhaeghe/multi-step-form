@@ -1,0 +1,31 @@
+@import '../../app/variables';
+
+.Container {
+  @media (min-width: $breakPoint) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: 'Nav Form' 'Nav  Footer';
+  }
+}
+
+.Form {
+  grid-area: Form;
+  margin: -4rem 1rem 1rem 1rem;
+  @media (min-width: $breakPoint) {
+    margin: 0 0 0 0;
+  }
+}
+
+.Footer {
+  grid-area: Footer;
+  @media (max-width: $breakPoint) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
+.Nav {
+  grid-area: Nav;
+}

@@ -1,0 +1,49 @@
+@import '../../app/variables';
+
+.Item {
+  display: flex;
+  place-items: center;
+  gap: 1rem;
+  background: none;
+  border: none;
+  text-align: start;
+  font-family: var(--font-family);
+
+  &[data-active='true'] .Step,
+  &:hover .Step {
+    background: var(--secondary-accent-color);
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+  }
+
+  .Step {
+    display: grid;
+    place-items: center;
+    height: 2rem;
+    width: 2rem;
+    color: var(--background-color);
+    border: 1px solid var(--background-color);
+    border-radius: 50%;
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-bold);
+  }
+  .Text {
+    .Title {
+      text-transform: uppercase;
+      color: var(--secondary-accent-color);
+      font-size: small;
+    }
+
+    .SubTitle {
+      text-transform: uppercase;
+      color: var(--background-color);
+      font-weight: var(--font-weight-bold);
+      font-size: small;
+    }
+
+    @media (max-width: $breakPoint) {
+      display: none;
+    }
+  }
+}

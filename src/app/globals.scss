@@ -1,0 +1,71 @@
+:root {
+  font-size: 16px;
+  --font-family: Ubuntu;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --background-color: hsl(231, 100%, 99%);
+  --primary-color: hsl(213, 96%, 18%);
+  --secondary-color: hsl(243, 100%, 62%);
+  --secondary-accent-color: hsl(206, 94%, 87%);
+  --accent-color: hsl(354, 84%, 57%);
+  --muted-color: hsl(231, 11%, 63%);
+  --background-contrast-color: hsl(217, 100%, 97%);
+}
+
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//   }
+// }
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--primary-color);
+  background: var(--background-contrast-color);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu'), url('../../fonts/Ubuntu-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Ubuntu'), url('../../fonts/Ubuntu-Medium.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Ubuntu'), url('../../fonts/Ubuntu-Bold.ttf') format('ttf');
+}

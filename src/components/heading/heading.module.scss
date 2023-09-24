@@ -1,0 +1,9 @@
+.Heading {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-color);
+
+  &:not(:last-child) {
+    padding-bottom: 1rem;
+  }
+}
