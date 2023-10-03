@@ -2,11 +2,14 @@
 
 .Container {
   padding: 3rem 0 6rem 0;
-  background-color: var(--secondary-color);
+  background-image: url('./bg-sidebar-mobile.svg');
+  background-size: cover;
+
   @media (min-width: $breakPoint) {
     padding: 3rem;
     height: 100%;
     border-radius: 1rem;
+    background-image: url('./bg-sidebar-desktop.svg');
   }
 }
 
