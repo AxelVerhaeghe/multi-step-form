@@ -9,7 +9,7 @@ type PersonalInfomProps = {
   defaultValues?: PersonalInfoFormSchema;
 };
 
-export default function PersonalInfo({
+export default function PersonalInfoSection({
   onSumbit,
   defaultValues,
 }: PersonalInfomProps) {

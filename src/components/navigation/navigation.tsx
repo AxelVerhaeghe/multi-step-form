@@ -10,16 +10,16 @@ export default function Navigation({ step, onClick }: NavigationProps) {
   return (
     <nav className={styles.Container}>
       <ul className={styles.Nav}>
-        <NavigationItem onClick={onClick} isActive={step === 1} step={1}>
+        <NavigationItem onClick={onClick} isActive={step === 0} step={0}>
           Your info
         </NavigationItem>
-        <NavigationItem onClick={onClick} isActive={step === 2} step={2}>
+        <NavigationItem onClick={onClick} isActive={step === 1} step={1}>
           Select plan
         </NavigationItem>
-        <NavigationItem onClick={onClick} isActive={step === 3} step={3}>
+        <NavigationItem onClick={onClick} isActive={step === 2} step={2}>
           Add-ons
         </NavigationItem>
-        <NavigationItem onClick={onClick} isActive={step === 4} step={4}>
+        <NavigationItem onClick={onClick} isActive={step === 3} step={3}>
           Summary
         </NavigationItem>
       </ul>

@@ -1,35 +1,44 @@
 'use client';
 
-import React, { useCallback, useMemo, useState } from 'react';
-import PersonalInfo from '../personal-info/personal-info';
-import SelectPlan from '../select-plan/select-plan';
+import React, { useCallback, useState } from 'react';
+import PersonalInfoSection from '../personal-info-section/personal-info-section';
+import SelectPlanSection from '../select-plan-section/select-plan-section';
 import Navigation from '../navigation/navigation';
 import styles from './registration-form.module.scss';
 import Footer from '../footer/footer';
 import { PersonalInfoFormSchema } from '../personal-info-form/personal-info-form';
+import { SelectPlanFormSchema } from '../select-plan-form/select-plan-form';
+import useMultiStepForm from '@/hooks/useMultiStepForm';
 
 export default function RegistrationForm() {
-  const [step, setStep] = useState(1);
   const [personalInfo, setPersonalInfo] = useState<PersonalInfoFormSchema>();
+  const [plan, setPlan] = useState<SelectPlanFormSchema>();
 
-  const handlePersonalInfoFormSubmit = useCallback(
-    (data: PersonalInfoFormSchema) => {
-      setPersonalInfo(data);
-      setStep((currentStep) => currentStep + 1);
-    },
-    []
-  );
+  const handlePersonalInfoFormSubmit = (data: PersonalInfoFormSchema) => {
+    setPersonalInfo(data);
+    next();
+  };
 
-  const handleConfirm = useCallback(() => {
-    console.log(personalInfo);
-  }, [personalInfo]);
+  const handleSelectPlanFormSubmit = (data: SelectPlanFormSchema) => {
+    setPlan(data);
+    next();
+  };
 
-  const steps = useMemo(
-    () => [
+  const {
+    currentStep,
+    goToStep,
+    previous,
+    next,
+    isFirstStep,
+    isLastStep,
+    step,
+    currentFormId,
+  } = useMultiStepForm({
+    steps: [
       {
         id: 'personal-info-form',
         component: (
-          <PersonalInfo
+          <PersonalInfoSection
             onSumbit={handlePersonalInfoFormSubmit}
             defaultValues={personalInfo}
           />
@@ -37,32 +46,29 @@ export default function RegistrationForm() {
       },
       {
         id: 'select-plan-form',
-        component: <SelectPlan />,
+        component: (
+          <SelectPlanSection
+            onSubmit={handleSelectPlanFormSubmit}
+            defaultValues={plan}
+          />
+        ),
       },
+      { id: 'final-form', component: <div>final step</div> },
     ],
-    [handlePersonalInfoFormSubmit, personalInfo]
-  );
-  const currentStep = steps[step - 1];
-
-  const handleNavigate = useCallback((newStep: number) => setStep(newStep), []);
-  const handleBack = useCallback(
-    () => setStep((currentStep) => currentStep - 1),
-    []
-  );
+  });
 
   return (
     <div className={styles.Container}>
       <div className={styles.Nav}>
-        <Navigation step={step} onClick={handleNavigate} />
+        <Navigation step={currentStep} onClick={goToStep} />
       </div>
-      <div className={styles.Form}>{currentStep.component}</div>
+      <div className={styles.Form}>{step}</div>
       <div className={styles.Footer}>
         <Footer
-          isFirstStep={step === 1}
-          isLastStep={step === steps.length}
-          onBack={handleBack}
-          onConfirm={handleConfirm}
-          form={currentStep.id}
+          isFirstStep={isFirstStep}
+          isLastStep={isLastStep}
+          onBack={previous}
+          form={currentFormId}
         />
       </div>
     </div>

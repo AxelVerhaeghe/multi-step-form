@@ -1,0 +1,16 @@
+.Form {
+  display: grid;
+}
+
+.Switch {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  background: var(--background-contrast-color);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.Plans {
+  margin-bottom: 2rem;
+}

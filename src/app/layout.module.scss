@@ -1,8 +1,9 @@
 @import '../app/variables';
 
 .Container {
+  max-width: 850px;
   @media (min-width: $breakPoint) {
-    margin: 1rem;
+    margin: 2rem auto;
     padding: 1rem;
     border-radius: 1rem;
     box-shadow: 5px 5px 12px -5px rgba($color: #000000, $alpha: 0.2);

@@ -15,11 +15,14 @@
   border-radius: 0.275rem;
   padding: 1rem;
   border: 1px solid var(--muted-color);
+  &[aria-invalid='true'] {
+    border: 1px solid var(--accent-color);
+  }
 }
 
 .Label {
   font-family: var(--font-family);
-  font-weight: var(--font-weight-regular);
+  font-weight: var(--font-weight-medium);
   color: var(--primary-color);
 }
 
@@ -29,5 +32,6 @@
 }
 
 .Error {
+  font-weight: var(--font-weight-medium);
   color: var(--accent-color);
 }

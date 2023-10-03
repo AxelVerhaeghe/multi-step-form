@@ -1,0 +1,65 @@
+.Switch {
+  display: flex;
+  place-items: center;
+  gap: 1rem;
+  color: var(--primary-color);
+
+  .Indicator {
+    width: 2rem;
+    height: 1rem;
+    border: 2px solid var(--primary-color);
+    background: var(--primary-color);
+    border-radius: 1rem;
+    transition: all 200ms;
+
+    &:before {
+      content: '';
+      display: block;
+      margin: 0;
+      width: 0.75rem;
+      height: 0.75rem;
+      background: var(--background-color);
+      border-radius: 50%;
+      transition: all 200ms;
+    }
+  }
+
+  &[data-selected] {
+    .SelectedLabel {
+      color: var(--primary-color);
+    }
+
+    .NotSelectedLabel {
+      color: var(--muted-color);
+    }
+
+    .Indicator {
+      &:before {
+        transform: translateX(100%);
+      }
+    }
+
+    &[data-pressed] {
+      .Indicator {
+        border-color: var(--selected-color-pressed);
+        background: var(--selected-color-pressed);
+      }
+    }
+  }
+
+  &[data-focus-visible] .Indicator {
+    box-shadow: 0 0 0 2px var(--accent-color), 0 0 0 4px var(--primary-color);
+  }
+
+  &[data-disabled] {
+    opacity: 0.4;
+  }
+}
+
+.SelectedLabel {
+  color: var(--muted-color);
+}
+
+.NotSelectedLabel {
+  color: var(--primary-color);
+}

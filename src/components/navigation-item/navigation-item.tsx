@@ -20,9 +20,9 @@ export default function NavigationItem({
         data-active={isActive}
         onClick={() => onClick(step)}
       >
-        <div className={styles.Step}>{step}</div>
+        <div className={styles.Step}>{step + 1}</div>
         <div className={styles.Text}>
-          <div className={styles.Title}>Step {step}</div>
+          <div className={styles.Title}>Step {step + 1}</div>
           <div className={styles.SubTitle}>{children}</div>
         </div>
       </button>
