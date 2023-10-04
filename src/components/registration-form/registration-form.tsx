@@ -11,11 +11,19 @@ import { SelectPlanFormSchema } from '../select-plan-form/select-plan-form';
 import useMultiStepForm from '@/hooks/useMultiStepForm';
 import { AddonsFormSchema } from '../addons-form/addons-form';
 import AddonsSection from '../addons-section/addons-section';
+import SummarySection from '../summary-section/summary-section';
 
 export default function RegistrationForm() {
   const [personalInfo, setPersonalInfo] = useState<PersonalInfoFormSchema>();
-  const [plan, setPlan] = useState<SelectPlanFormSchema>();
-  const [addons, setAddons] = useState<AddonsFormSchema>();
+  const [plan, setPlan] = useState<SelectPlanFormSchema>({
+    plan: 'arcade',
+    frequency: false,
+  });
+  const [addons, setAddons] = useState<AddonsFormSchema>({
+    customizableProfile: false,
+    largerStorage: false,
+    onlineService: false,
+  });
 
   const handlePersonalInfoFormSubmit = (data: PersonalInfoFormSchema) => {
     setPersonalInfo(data);
@@ -31,6 +39,8 @@ export default function RegistrationForm() {
     setAddons(data);
     next();
   };
+
+  const handleChangePlan = () => goToStep(1);
 
   const {
     currentStep,
@@ -67,7 +77,17 @@ export default function RegistrationForm() {
           <AddonsSection
             onSumbit={handleAddonsSubmit}
             defaultValues={addons}
-            frequency={plan?.frequency ? 'monthly' : 'yearly'}
+            frequency={plan?.frequency ? 'yearly' : 'monthly'}
+          />
+        ),
+      },
+      {
+        id: 'summary-form',
+        component: (
+          <SummarySection
+            plan={plan}
+            addons={addons}
+            onChangePlan={handleChangePlan}
           />
         ),
       },

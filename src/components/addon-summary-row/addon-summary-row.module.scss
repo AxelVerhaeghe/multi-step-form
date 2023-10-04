@@ -1,0 +1,8 @@
+.Addon {
+  display: flex;
+  justify-content: space-between;
+
+  .AddonTitle {
+    color: var(--muted-color);
+  }
+}

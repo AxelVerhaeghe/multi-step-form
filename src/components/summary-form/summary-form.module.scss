@@ -1,0 +1,38 @@
+.Plan {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--muted-color);
+
+  .PlanChoice,
+  .PlanPrice {
+    font-weight: var(--font-weight-bold);
+  }
+}
+
+.Choices {
+  background: var(--background-contrast-color);
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+
+.Addons {
+  display: grid;
+  gap: 0.5rem;
+  padding-top: 1rem;
+}
+
+.Total {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+
+  .TotalTitle {
+    color: var(--muted-color);
+  }
+
+  .TotalPrice {
+    font-weight: var(--font-weight-bold);
+    color: var(--secondary-color);
+  }
+}

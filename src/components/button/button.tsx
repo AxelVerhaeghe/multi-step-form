@@ -9,7 +9,7 @@ import styles from './button.module.scss';
 
 type ButtonProps = RAButtonProps & {
   children: ReactNode;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'link';
 };
 
 export default function Button({

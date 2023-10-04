@@ -24,4 +24,11 @@
       background: var(--background-contrast-color);
     }
   }
+
+  &[data-variant='link'] {
+    background: none;
+    color: var(--muted-color);
+    text-decoration: underline;
+    padding: 0;
+  }
 }

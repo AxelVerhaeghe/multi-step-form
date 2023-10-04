@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import ArcadeIcon from './icon-arcade.svg';
 import AdvancedIcon from './icon-advanced.svg';
 import ProIcon from './icon-pro.svg';
+import { formatPrice } from '@/util/formatPrice';
 
 const schema = z.object({
   plan: z.enum(['arcade', 'advanced', 'pro']),
@@ -20,18 +21,18 @@ type SelectPlanFormProps = {
   defaultValues?: SelectPlanFormSchema;
 };
 
-const prices = {
+export const prices = {
   arcade: {
-    monthly: '$9/mo',
-    yearly: '$90/yr',
+    monthly: 9,
+    yearly: 90,
   },
   advanced: {
-    monthly: '$12/mo',
-    yearly: '$120/yr',
+    monthly: 12,
+    yearly: 120,
   },
   pro: {
-    monthly: '$15/mo',
-    yearly: '$150/yr',
+    monthly: 15,
+    yearly: 150,
   },
 };
 
@@ -86,7 +87,7 @@ export default function SelectPlanForm({
               <PlanOption
                 icon={ArcadeIcon}
                 value='arcade'
-                price={prices.arcade[frequency]}
+                price={formatPrice(prices.arcade[frequency], frequency)}
                 promo={promos.arcade[frequency]}
               >
                 Arcade
@@ -94,7 +95,7 @@ export default function SelectPlanForm({
               <PlanOption
                 icon={AdvancedIcon}
                 value='advanced'
-                price={prices.advanced[frequency]}
+                price={formatPrice(prices.advanced[frequency], frequency)}
                 promo={promos.arcade[frequency]}
               >
                 Advanced
@@ -102,7 +103,7 @@ export default function SelectPlanForm({
               <PlanOption
                 icon={ProIcon}
                 value='pro'
-                price={prices.pro[frequency]}
+                price={formatPrice(prices.pro[frequency], frequency)}
                 promo={promos.arcade[frequency]}
               >
                 Pro

@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import z from 'zod';
 import Checkbox from '../checkbox/checkbox';
 import styles from './addons-form.module.scss';
+import { formatPrice } from '@/util/formatPrice';
 
 const schema = z.object({
   onlineService: z.boolean(),
@@ -17,18 +18,18 @@ type AddonsFormProps = {
   frequency?: 'monthly' | 'yearly';
 };
 
-const prices = {
+export const prices = {
   onlineService: {
-    monthly: '+$1/mo',
-    yearly: '$10/yr',
+    monthly: 1,
+    yearly: 10,
   },
   largerStorage: {
-    monthly: '+$2/mo',
-    yearly: '$20/yr',
+    monthly: 2,
+    yearly: 20,
   },
   customizableProfile: {
-    monthly: '+$2/mo',
-    yearly: '$20/yr',
+    monthly: 2,
+    yearly: 20,
   },
 };
 
@@ -51,7 +52,7 @@ export default function AddonsForm({
         control={control}
         name='onlineService'
         description='Access to multiplayer games'
-        price={prices.onlineService[frequency]}
+        price={formatPrice(prices.onlineService[frequency], frequency, true)}
       >
         Online service
       </Checkbox>
@@ -59,7 +60,7 @@ export default function AddonsForm({
         control={control}
         name='largerStorage'
         description='Extra 1TB of cloud save'
-        price={prices.largerStorage[frequency]}
+        price={formatPrice(prices.largerStorage[frequency], frequency, true)}
       >
         Larger storage
       </Checkbox>
@@ -67,7 +68,11 @@ export default function AddonsForm({
         control={control}
         name='customizableProfile'
         description='Custom theme on your profile'
-        price={prices.customizableProfile[frequency]}
+        price={formatPrice(
+          prices.customizableProfile[frequency],
+          frequency,
+          true
+        )}
       >
         Customizable profile
       </Checkbox>
