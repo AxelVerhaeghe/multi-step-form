@@ -12,6 +12,7 @@ import useMultiStepForm from '@/hooks/useMultiStepForm';
 import { AddonsFormSchema } from '../addons-form/addons-form';
 import AddonsSection from '../addons-section/addons-section';
 import SummarySection from '../summary-section/summary-section';
+import Confirmation from '../confirmation/confirmation';
 
 export default function RegistrationForm() {
   const [personalInfo, setPersonalInfo] = useState<PersonalInfoFormSchema>();
@@ -42,6 +43,11 @@ export default function RegistrationForm() {
 
   const handleChangePlan = () => goToStep(1);
 
+  const handleConfirm = () => {
+    console.log({ ...personalInfo, ...plan, ...addons });
+    next();
+  };
+
   const {
     currentStep,
     goToStep,
@@ -51,6 +57,7 @@ export default function RegistrationForm() {
     isLastStep,
     step,
     currentFormId,
+    isCompleted,
   } = useMultiStepForm({
     steps: [
       {
@@ -88,6 +95,7 @@ export default function RegistrationForm() {
             plan={plan}
             addons={addons}
             onChangePlan={handleChangePlan}
+            onConfirm={handleConfirm}
           />
         ),
       },
@@ -99,15 +107,23 @@ export default function RegistrationForm() {
       <div className={styles.Nav}>
         <Navigation step={currentStep} onClick={goToStep} />
       </div>
-      <div className={styles.Form}>{step}</div>
-      <div className={styles.Footer}>
-        <Footer
-          isFirstStep={isFirstStep}
-          isLastStep={isLastStep}
-          onBack={previous}
-          form={currentFormId}
-        />
-      </div>
+      {isCompleted ? (
+        <div className={styles.Form}>
+          <Confirmation />
+        </div>
+      ) : (
+        <>
+          <div className={styles.Form}>{step}</div>
+          <div className={styles.Footer}>
+            <Footer
+              isFirstStep={isFirstStep}
+              isLastStep={isLastStep}
+              onBack={previous}
+              form={currentFormId}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }

@@ -10,17 +10,20 @@ import {
 } from '../select-plan-form/select-plan-form';
 import styles from './summary-form.module.scss';
 import AddonSummaryRow from '../addon-summary-row/addon-summary-row';
+import { FormEvent } from 'react';
 
 type SummaryFormProps = {
   plan: SelectPlanFormSchema;
   addons: AddonsFormSchema;
   onChangePlan: () => void;
+  onConfirm: () => void;
 };
 
 export default function SummaryForm({
   plan,
   addons,
   onChangePlan,
+  onConfirm,
 }: SummaryFormProps) {
   const frequency = plan?.frequency ? 'yearly' : 'monthly';
 
@@ -31,8 +34,13 @@ export default function SummaryForm({
       .map((key) => addonPrices[key as keyof AddonsFormSchema][frequency])
       .reduce((acc, curr) => (acc += curr), 0);
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onConfirm();
+  };
+
   return (
-    <form id='summary-form'>
+    <form id='summary-form' onSubmit={handleSubmit}>
       <section className={styles.Choices}>
         <div className={styles.Plan}>
           <div>

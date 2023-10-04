@@ -7,19 +7,26 @@ type SummarySectionProps = {
   plan: SelectPlanFormSchema;
   addons: AddonsFormSchema;
   onChangePlan: () => void;
+  onConfirm: () => void;
 };
 
 export default function SummarySection({
   plan,
   addons,
   onChangePlan,
+  onConfirm,
 }: SummarySectionProps) {
   return (
     <Section
       title='Finishing up'
       description='Double-check everything looks OK before confirming.'
     >
-      <SummaryForm plan={plan} addons={addons} onChangePlan={onChangePlan} />
+      <SummaryForm
+        plan={plan}
+        addons={addons}
+        onChangePlan={onChangePlan}
+        onConfirm={onConfirm}
+      />
     </Section>
   );
 }

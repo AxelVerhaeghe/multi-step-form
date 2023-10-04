@@ -4,7 +4,9 @@
   @media (min-width: $breakPoint) {
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-template-areas: 'Nav Form' 'Nav  Footer';
+    grid-template-areas:
+      'Nav Form'
+      'Nav  Footer';
   }
 }
 

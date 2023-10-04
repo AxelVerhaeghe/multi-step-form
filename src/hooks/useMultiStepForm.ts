@@ -11,11 +11,13 @@ type UseMultiStepFormProps = {
 
 export default function useMultiStepForm({ steps }: UseMultiStepFormProps) {
   const [currentStep, setCurrentStep] = useState(0);
+  const [isCompleted, setIsCompleted] = useState(false);
 
   const next = useCallback(
     () =>
       setCurrentStep((curr) => {
         if (curr >= steps.length - 1) {
+          setIsCompleted(true);
           return curr;
         } else {
           return curr + 1;
@@ -37,6 +39,7 @@ export default function useMultiStepForm({ steps }: UseMultiStepFormProps) {
   );
 
   const goToStep = useCallback((newStep: number) => {
+    setIsCompleted(false);
     setCurrentStep(newStep);
   }, []);
 
@@ -49,5 +52,6 @@ export default function useMultiStepForm({ steps }: UseMultiStepFormProps) {
     goToStep,
     isFirstStep: currentStep === 0,
     isLastStep: currentStep === steps.length - 1,
+    isCompleted,
   };
 }
